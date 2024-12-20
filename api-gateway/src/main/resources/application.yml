@@ -1,0 +1,55 @@
+server:
+  port: 8084
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    reactor.netty: INFO
+    org.springframework.security: TRACE
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENTID}
+            client-secret: ${GOOGLE_CLIENTSECRET}
+            scope: openid,profile,email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+  cloud:
+    gateway:
+      routes:
+        - id: repair-service-place
+          uri: http://${REPAIR_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/repairs
+            - Method=POST
+          filters:
+            - SetPath=/api/repair
+        - id: repair-service-get-all
+          uri: http://${REPAIR_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/repairs
+            - Method=GET
+          filters:
+            - SetPath=/api/repair
+        - id: repair-service-update
+          uri: http://${REPAIR_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/repairs/{id}
+            - Method=PUT
+          filters:
+            - SetPath=/api/repair/{id}
+        - id: repair-service-delete
+          uri: http://${REPAIR_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/repairs/{id}
+            - Method=DELETE
+          filters:
+            - SetPath=/api/repair/{id}
