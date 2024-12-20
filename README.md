@@ -119,7 +119,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Docker-url]: https://www.docker.com/
 [Kubernetes.com]: https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff
 [Kubernetes-url]: https://www.kubernetes.io/
-[SpringBoot.com]: https://img.shields.io/badge/Spring%20Boot-6DB33F?
+[SpringBoot.com]: https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [NPM.com]: https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff
 [NPM-url]: https://www.npmjs.com/
