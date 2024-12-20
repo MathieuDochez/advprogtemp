@@ -48,9 +48,13 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 
 ### Built With
 
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![Flutter][Flutter.com]][Flutter-url]
-* [![Firebase][Firebase.com]][Firebase-url]
+* [![IntelliJ IDEA][IntelliJ.com]][IntelliJ-url]
+* [![MongoDB][MongoDB.com]][MongoDB-url]
+* [![Docker][Docker.com]][Docker-url]
+* [![Kubernetes][Kubernetes.com]][Kubernetes-url]
+* [![Java][Java.com]][Java-url]
+* [![SpringBoot][SpringBoot.com]][SpringBoot-url]
+* [![NPM][NPM.com]][NPM-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,9 +111,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-shield]:https://img.shields.io/github/license/TheCherno/Hazel
 [license-url]: LICENSE.txt
 [product-screenshot]: images/screenshot.png
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[Firebase.com]: https://www.gstatic.com/devrel-devsite/prod/vc1876c9afda71006d25374702aaf4e66517da84f7b6c3f5bd43a8148dec68337/firebase/images/lockup.svg
-[Firebase-url]: https://firebase.google.com/docs
-[Flutter.com]: https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg
-[Flutter-url]: https://docs.flutter.dev/?_gl=1*19nd8u6*_ga*NzQzMzY4OTQzLjE3Mjk1MjE5NjY.*_ga_04YGWK0175*MTczMTQ5NjI0MC4yLjAuMTczMTQ5NjI0MC4wLjAuMA..
+[IntelliJ.com]: https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white
+[IntelliJ-url]: https://www.jetbrains.com/idea/
+[MongoDB.com]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
+[Docker.com]: https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff
+[Docker-url]: https://www.docker.com/
+[Kubernetes.com]: https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff
+[Kubernetes-url]: https://www.kubernetes.io/
+[SpringBoot.com]: https://img.shields.io/badge/Spring%20Boot-6DB33F?
+[SpringBoot-url]: https://spring.io/projects/spring-boot
+[NPM.com]: https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff
+[NPM-url]: https://www.npmjs.com/
+[Java.com]: https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white
+[Java-url]: https://www.java.com/nl/
