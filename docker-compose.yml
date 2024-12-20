@@ -82,8 +82,8 @@ services:
     - bike-service
     - customer-service
   environment:
-   PRODUCT_SERVICE_BASEURL: repair-service:8080
-   INVENTORY_INFO_SERVICE_BASEURL: review-service:8082
+   BIKE_SERVICE_BASEURL: repair-service:8080
+   REVIEW_INFO_SERVICE_BASEURL: review-service:8082
    MYSQL_DB_USERNAME: root
    MYSQL_DB_PASSWORD: abc123
    MYSQL_DB_HOST: mysql-review
