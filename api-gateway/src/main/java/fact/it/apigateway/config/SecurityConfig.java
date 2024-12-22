@@ -19,6 +19,12 @@ public class SecurityConfig {
                 .authorizeExchange(exchange ->
                         exchange.pathMatchers(HttpMethod.GET,"/bike")
                                 .permitAll()
+                                .pathMatchers(HttpMethod.GET, "/customer")
+                                .permitAll()
+                                .pathMatchers(HttpMethod.GET, "/review")
+                                .permitAll()
+                                .pathMatchers(HttpMethod.GET, "/repair")
+                                .permitAll()
                                 .anyExchange()
                                 .authenticated()
                 )
