@@ -9,21 +9,21 @@ services:
   mongo-customer:
   image: mongo:latest
   ports:
-    - 22017:22017
+    - 22018:22017
   volumes:
     - mongodb_customer_data:/data/db
        
  mongo-review:
     image: mongo:latest
     ports:
-      - 8082:8082
+      - 22019:22017
     volumes:
       - mongodb_review_data:/data/db
     
  mysql-repair:
   image: mysql:latest
   ports:
-    - 3306:3306
+    - 3307:3306
   volumes:
     - mysql_repair_data:/var/lib/mysql
   environment:
@@ -32,9 +32,9 @@ services:
   bike-service:
   depends_on:
     - mongo-bike
-  image: mathieudochez/bike-service # nog aan te passen '/bike-service' miverboven/product-service
+  image: mathieudochez/bike-service
   ports:
-    - 22017:27017
+    - 8080:8080
   links:
     - mongo-bikes
   environment:
@@ -44,9 +44,9 @@ services:
   customer-service:
   depends_on:
     - mongo-customer
-  image: mathieudochez/customer-service #nog aan te passen '/customer-service' miverboven/product-service
+  image: mathieudochez/customer-service
   ports:
-    - 22017:27017
+    - 8082:8082
   links:
     - mongo-products
   environment:
@@ -58,7 +58,7 @@ services:
       - mongo-review
     image: mathieudochez/review-service
     ports:
-      - 22017:27017
+      - 8083:8083
     links:
       - mongo-review
     environment:
@@ -70,7 +70,7 @@ services:
     - review-service
     - bike-service
     - customer-service
-  image: mathieudochez/repair-service # nog aan te passen '/repair-service' miverboven/order-service
+  image: mathieudochez/repair-service
   ports:
     - 8081:8081
   links:
@@ -90,7 +90,7 @@ services:
    depends_on:
      - bike-service
      - repair-service
-   image: mathieudochez/api-gateway # no aan te passen '/api-gateway' miverboven/ede-api-gateway
+   image: mathieudochez/api-gateway
    ports:
      - 8084:8084
    links:
