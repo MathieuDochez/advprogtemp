@@ -43,13 +43,13 @@
 In our project we developed a Java backend achitecture of the basis of microservices. The acrhitecture includes:
 
 - 4 microservices
-  - Two MySQL backend microservices
-  - Two MongoDB backend microservices
+  - OneoMySQL backend microservices
+  - Three MongoDB backend microservices
 - Github Actions pipline
 - Api related stuff
-- Local hosting (Okteto didn't work anymore)
+- Local hosting
 
-Our story is that we want to let people see football matches, clubs, players and transfers.
+With this we intent to make te annoying process of getting ur bike fixed easier.
 <br/>
 
 <!-- ABOUT THE PROJECT -->
