@@ -6,11 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "review")
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
+@Document
 public class Review {
     private String id;
     private String comment;
