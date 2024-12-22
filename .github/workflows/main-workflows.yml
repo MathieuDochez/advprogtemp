@@ -106,7 +106,7 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USER }}/repair-service:latest ./repair-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/order-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/repair-service:latest
   apigateway:
     runs-on: ubuntu-latest
     name: Java 17 build, test, deliver api-gateway container
