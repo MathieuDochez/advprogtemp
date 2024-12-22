@@ -30,11 +30,11 @@ services:
     - mysql_repair_data:/var/lib/mysql
   environment:
    MYSQL_ROOT_PASSWORD: abc123
-    
+
  review-service:
   depends_on:
     - mysql-review
-  image: #nog aan te passen '/review-service' miverboven/inventory-service
+  image: review-service #nog aan te passen '/review-service' miverboven/inventory-service
   ports:
     - 3307:3307
   links:
@@ -48,7 +48,7 @@ services:
   bike-service:
   depends_on:
     - mongo-bike
-  image: # nog aan te passen '/bike-service' miverboven/product-service
+  image: bike-service # nog aan te passen '/bike-service' miverboven/product-service
   ports:
     - 22017:27017
   links:
@@ -60,7 +60,7 @@ services:
   customer-service:
   depends_on:
     - mongo-customer
-  image: #nog aan te passen '/customer-service' miverboven/product-service
+  image: customer-service #nog aan te passen '/customer-service' miverboven/product-service
   ports:
     - 22017:27017
   links:
@@ -74,7 +74,7 @@ services:
     - review-service
     - bike-service
     - customer-service
-  image: # nog aan te passen '/repairservice' miverboven/order-service
+  image: repair-service # nog aan te passen '/repair-service' miverboven/order-service
   ports:
     - 8081:8081
   links:
@@ -93,7 +93,7 @@ services:
    depends_on:
      - bike-service
      - repair-service
-   image: # no aan te passen '/api-gateway' miverboven/ede-api-gateway
+   image: api-gateway # no aan te passen '/api-gateway' miverboven/ede-api-gateway
    ports:
      - 8084:8084
    links:
