@@ -1,0 +1,110 @@
+services:
+ mongo-bike:
+  image: mongo:latest
+  ports:
+    - 22017:27017
+  volumes:
+    - mongodb_bike_data:/data/db
+ 
+  mongo-customer:
+  image: mongo:latest
+  ports:
+    - 22018:22018
+  volumes:
+    - mongodb_customer_data:/data/db
+       
+ mysql-review:
+  image: mysql:latest
+  ports:
+    - 3307:3307
+  volumes:
+    - mysql_review_data:/var/lib/mysql
+  environment:
+   MYSQL_ROOT_PASSWORD: abc123
+    
+ mysql-repair:
+  image: mysql:latest
+  ports:
+    - 3306:3306
+  volumes:
+    - mysql_inventory_data:/var/lib/mysql
+  environment:
+   MYSQL_ROOT_PASSWORD: abc123
+    
+ review-service:
+  depends_on:
+    - mysql-review
+  image: #nog aan te passen '/review-service' miverboven/inventory-service
+  ports:
+    - 3307:3307
+  links:
+    - mysql-review
+  environment:
+   MYSQL_DB_USERNAME: root
+   MYSQL_DB_PASSWORD: abc123
+   MYSQL_DB_HOST: mysql-review
+   MYSQL_DB_PORT: 3307
+
+  bike-service:
+  depends_on:
+    - mongo-bike
+  image: # nog aan te passen '/bike-service' miverboven/product-service
+  ports:
+    - 22017:27017
+  links:
+    - mongo-bikes
+  environment:
+   MONGODB_PORT: 27017
+   MONGODB_HOST: mongo-bike
+
+  customer-service:
+  depends_on:
+    - mongo-customer
+  image: #nog aan te passen '/customer-service' miverboven/product-service
+  ports:
+    - 22018:27018
+  links:
+    - mongo-products
+  environment:
+   MONGODB_PORT: 27018
+   MONGODB_HOST: mongo-customer
+
+  repair-service:
+  depends_on:
+    - review-service
+    - bike-service
+    - customer-service
+  image: # nog aan te passen '/repairservice' miverboven/order-service
+  ports:
+    - 8081:8081
+  links:
+    - review-service
+    - bike-service
+    - customer-service
+  environment:
+   BIKE_SERVICE_BASEURL: repair-service:8080
+   REVIEW_INFO_SERVICE_BASEURL: review-service:8082
+   MYSQL_DB_USERNAME: root
+   MYSQL_DB_PASSWORD: abc123
+   MYSQL_DB_HOST: mysql-review
+   MYSQL_DB_PORT: 3307
+
+ api-gateway:
+   depends_on:
+     - bike-service
+     - repair-service
+   image: # no aan te passen '/api-gateway' miverboven/ede-api-gateway
+   ports:
+     - 8084:8084
+   links:
+     - bike-service
+     - repair-service
+   environment:
+     BIKE_SERVICE_BASEURL: bike-service:8080
+     REPAIR_SERVICE_BASEURL: repair-service:8081
+
+volumes:
+ mongodb_bike_data:
+ mongodb_customer_data:
+ mysql_review_data:
+ mysql_repair_data:
