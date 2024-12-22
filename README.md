@@ -86,6 +86,12 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+#### DOCKER
+![Architecture](/images/docker_hub.png?raw=true "TESTS Bike")
+<br />
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 ## Getting Started
 ### Prerequisites
