@@ -21,5 +21,4 @@ public class RepairLineItem {
     private String skuCode;
     private BigDecimal price;
     private String description;
-    private Integer quantity;
 }

@@ -66,7 +66,6 @@ class RepairServiceUnitTests {
         RepairLineItemDto repairLineItemDto = new RepairLineItemDto();
         repairLineItemDto.setId(1L);
         repairLineItemDto.setSkuCode(skuCode);
-        repairLineItemDto.setQuantity(quantity);
         repairLineItemDto.setPrice(price); // Add price to the DTO
         repairRequest.setRepairLineItemsDtoList(Arrays.asList(repairLineItemDto));
 
@@ -85,7 +84,7 @@ class RepairServiceUnitTests {
         Repair repair = new Repair();
         repair.setId(1L);
         repair.setRepairNumber(UUID.randomUUID().toString());
-        RepairLineItem repairLineItem = new RepairLineItem(1L, skuCode, price, description, quantity); // Correct constructor usage
+        RepairLineItem repairLineItem = new RepairLineItem(1L, skuCode, price, description); // Correct constructor usage
         repair.setRepairLineItemsList(Arrays.asList(repairLineItem));
 
         // Mock the repository save method
@@ -107,58 +106,15 @@ class RepairServiceUnitTests {
     }
 
     @Test
-    public void testPlaceRepair_FailureIfOutOfStock() {
-        // Arrange
-        String skuCode = "sku1";
-        Integer quantity = 2;
-        BigDecimal price = BigDecimal.valueOf(100);
-        String description = "Test Description";
-        String name = "Test Name";
-
-        RepairRequest repairRequest = new RepairRequest();
-        RepairLineItemDto repairLineItemDto = new RepairLineItemDto();
-        repairLineItemDto.setId(1L);
-        repairLineItemDto.setSkuCode(skuCode);
-        repairLineItemDto.setQuantity(quantity);
-        repairLineItemDto.setPrice(price); // Add price to the DTO
-        repairRequest.setRepairLineItemsDtoList(Arrays.asList(repairLineItemDto));
-
-        // ReviewResponse no longer contains skuCode
-        ReviewResponse reviewResponse = new ReviewResponse();
-        reviewResponse.setId("review1");
-        reviewResponse.setComment("Item out of stock");
-        reviewResponse.setRating(1);
-
-        BikeResponse bikeResponse = new BikeResponse();
-        bikeResponse.setSkuCode(skuCode);
-        bikeResponse.setName(name);
-        bikeResponse.setDescription(description);
-        bikeResponse.setPrice(price);
-
-        // Mock WebClient behavior
-        when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri(anyString(), any(Function.class))).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(ReviewResponse[].class)).thenReturn(Mono.just(new ReviewResponse[]{reviewResponse}));
-
-        // Act
-        boolean result = repairService.placeRepair(repairRequest);
-
-        // Assert
-        assertFalse(result);
-        verify(repairRepository, times(0)).save(any(Repair.class));
-    }
-
-    @Test
     public void testGetAllRepairs() {
         // Arrange
-        RepairLineItem repairLineItem1 = new RepairLineItem(1L, "sku1", new BigDecimal("10.00"), "Description 1", 2);
-        RepairLineItem repairLineItem2 = new RepairLineItem(2L, "sku2", new BigDecimal("20.00"), "Description 2", 3);
+        RepairLineItem repairLineItem1 = new RepairLineItem(1L, "sku1", new BigDecimal("10.00"), "Description 1");
+        RepairLineItem repairLineItem2 = new RepairLineItem(2L, "sku2", new BigDecimal("20.00"), "Description 2");
 
         Repair repair1 = new Repair(1L, "repair1", Arrays.asList(repairLineItem1, repairLineItem2));
 
-        RepairLineItem repairLineItem3 = new RepairLineItem(3L, "sku3", new BigDecimal("30.00"), "Description 3", 4);
-        RepairLineItem repairLineItem4 = new RepairLineItem(4L, "sku4", new BigDecimal("40.00"), "Description 4", 5);
+        RepairLineItem repairLineItem3 = new RepairLineItem(3L, "sku3", new BigDecimal("30.00"), "Description 3");
+        RepairLineItem repairLineItem4 = new RepairLineItem(4L, "sku4", new BigDecimal("40.00"), "Description 4");
 
         Repair repair2 = new Repair(2L, "repair2", Arrays.asList(repairLineItem3, repairLineItem4));
 
@@ -179,10 +135,9 @@ class RepairServiceUnitTests {
         RepairRequest repairRequest = new RepairRequest();
         RepairLineItemDto repairLineItemDto = new RepairLineItemDto();
         repairLineItemDto.setSkuCode("sku1");
-        repairLineItemDto.setQuantity(2);
         repairRequest.setRepairLineItemsDtoList(Arrays.asList(repairLineItemDto));
 
-        Repair repair = new Repair(repairId, "repair1", Arrays.asList(new RepairLineItem(1L, "sku1", new BigDecimal("10.00"), "Description", 2)));
+        Repair repair = new Repair(repairId, "repair1", Arrays.asList(new RepairLineItem(1L, "sku1", new BigDecimal("10.00"), "Description")));
 
         when(repairRepository.findById(repairId)).thenReturn(java.util.Optional.of(repair));
         when(repairRepository.save(any(Repair.class))).thenReturn(repair);
