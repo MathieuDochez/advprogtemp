@@ -25,13 +25,12 @@ services:
       - mongo-review
     image: mathieudochez/review-service
     ports:
-      - 8083:8083
+      - 22017:27017
     links:
       - mongo-review
     environment:
       MONGODB_PORT: 27017
       MONGODB_HOST: mongo-review
-      REVIEW_SERVICE_BASEURL: review-service:8083
     
  mysql-repair:
   image: mysql:latest
