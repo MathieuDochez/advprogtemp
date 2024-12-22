@@ -36,10 +36,9 @@
     <li><a href="#license">License</a></li>
   </ol>
 </details>
-
-<hr/>
 <br/>
-## Introduction
+
+## About The Project
 
 In our project we developed a Java backend achitecture of the basis of microservices. The acrhitecture includes:
 
@@ -51,7 +50,6 @@ In our project we developed a Java backend achitecture of the basis of microserv
 - Local hosting (Okteto didn't work anymore)
 
 Our story is that we want to let people see football matches, clubs, players and transfers.
-<hr/>
 <br/>
 
 <!-- ABOUT THE PROJECT -->
