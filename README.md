@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Hazel](/images/architecture.png?raw=true "Hazel")
+![Hazel](/images/architecture.png?raw=true "Architecture")
 <br />
 Made by: Mathieu Dochez & Moos Vanlangendonck
 <!-- TODO -->
