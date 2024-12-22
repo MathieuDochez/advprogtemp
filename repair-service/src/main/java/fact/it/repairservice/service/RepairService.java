@@ -6,6 +6,7 @@ import fact.it.repairservice.model.RepairLineItem;
 import fact.it.repairservice.repository.RepairRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -23,6 +24,12 @@ public class RepairService {
     private final RepairRepository repairRepository;
     private final WebClient webClient;
 
+    @Value("${bikeservice.baseurl}")
+    private String bikeServiceBaseUrl;
+
+    @Value("${reviewservice.baseurl}")
+    private String reviewServiceBaseUrl;
+
     public boolean placeRepair(RepairRequest repairRequest) {
         Repair repair = new Repair();
         repair.setRepairNumber(UUID.randomUUID().toString());
@@ -30,40 +37,37 @@ public class RepairService {
         List<RepairLineItem> repairLineItems = repairRequest.getRepairLineItemsDtoList()
                 .stream()
                 .map(this::mapToRepairLineItem)
-                .toList();
+                .collect(Collectors.toList());
 
         repair.setRepairLineItemsList(repairLineItems);
 
         List<String> skuCodes = repair.getRepairLineItemsList().stream()
                 .map(RepairLineItem::getSkuCode)
-                .toList();
+                .collect(Collectors.toList());
 
         ReviewResponse[] reviewResponseArray = webClient.get()
-                .uri("http://localhost:8082/api/repair",
+                .uri("http://" + reviewServiceBaseUrl + "/api/review",
                         uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
                 .retrieve()
                 .bodyToMono(ReviewResponse[].class)
                 .block();
 
         BikeResponse[] bikeResponseArray = webClient.get()
-                .uri("http://localhost:8080/api/bike",
+                .uri("http://" + bikeServiceBaseUrl + "/api/bike",
                         uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
                 .retrieve()
                 .bodyToMono(BikeResponse[].class)
                 .block();
 
-        repair.getRepairLineItemsList().stream()
-                .map(repairItem -> {
-                    BikeResponse bike = Arrays.stream(bikeResponseArray)
-                            .filter(p -> p.getSkuCode().equals(repairItem.getSkuCode()))
-                            .findFirst()
-                            .orElse(null);
-                    if (bike != null) {
-                        repairItem.setPrice(bike.getPrice());
-                    }
-                    return repairItem;
-                })
-                .collect(Collectors.toList());
+        repair.getRepairLineItemsList().forEach(repairItem -> {
+            BikeResponse bike = Arrays.stream(bikeResponseArray)
+                    .filter(p -> p.getSkuCode().equals(repairItem.getSkuCode()))
+                    .findFirst()
+                    .orElse(null);
+            if (bike != null) {
+                repairItem.setPrice(bike.getPrice());
+            }
+        });
 
         repairRepository.save(repair);
         return true;
@@ -81,21 +85,17 @@ public class RepairService {
     }
 
     public void updateRepair(Long id, RepairRequest repairRequest) {
-        Optional<Repair> optionalRepair = repairRepository.findById(id);
+        Repair repair = repairRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Repair with id " + id + " not found"));
 
-        if (optionalRepair.isPresent()) {
-            Repair repair = optionalRepair.get();
-            List<RepairLineItem> repairLineItems = repairRequest.getRepairLineItemsDtoList()
-                    .stream()
-                    .map(this::mapToRepairLineItem)
-                    .toList();
+        List<RepairLineItem> repairLineItems = repairRequest.getRepairLineItemsDtoList()
+                .stream()
+                .map(this::mapToRepairLineItem)
+                .collect(Collectors.toList());
 
-            repair.setRepairLineItemsList(repairLineItems);
+        repair.setRepairLineItemsList(repairLineItems);
 
-            repairRepository.save(repair);
-        } else {
-            throw new IllegalArgumentException("Repair with id " + id + " not found");
-        }
+        repairRepository.save(repair);
     }
 
     public void deleteRepair(Long id) {
@@ -124,6 +124,4 @@ public class RepairService {
                 ))
                 .collect(Collectors.toList());
     }
-
-
 }
