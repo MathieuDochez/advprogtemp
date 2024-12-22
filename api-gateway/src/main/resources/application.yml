@@ -25,6 +25,7 @@ spring:
   cloud:
     gateway:
       routes:
+        # Repair Service Routes
         - id: repair-service-place
           uri: http://${REPAIR_SERVICE_BASEURL:localhost:8081}
           predicates:
@@ -53,3 +54,93 @@ spring:
             - Method=DELETE
           filters:
             - SetPath=/api/repair/{id}
+
+        # Review Service Routes
+        - id: review-service-create
+          uri: http://${REVIEW_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/reviews
+            - Method=POST
+          filters:
+            - SetPath=/api/review
+        - id: review-service-get-all
+          uri: http://${REVIEW_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/review
+            - Method=GET
+          filters:
+            - SetPath=/api/review
+        - id: review-service-update
+          uri: http://${REVIEW_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/review/{id}
+            - Method=PUT
+          filters:
+            - SetPath=/api/review/{id}
+        - id: review-service-delete
+          uri: http://${REVIEW_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/review/{id}
+            - Method=DELETE
+          filters:
+            - SetPath=/api/review/{id}
+
+        # Bike Service Routes
+        - id: bike-service-create
+          uri: http://${BIKE_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/bikes
+            - Method=POST
+          filters:
+            - SetPath=/api/bike
+        - id: bike-service-get-all
+          uri: http://${BIKE_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/bike
+            - Method=GET
+          filters:
+            - SetPath=/api/bike
+        - id: bike-service-update
+          uri: http://${BIKE_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/bike/{id}
+            - Method=PUT
+          filters:
+            - SetPath=/api/bike/{id}
+        - id: bike-service-delete
+          uri: http://${BIKE_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/bike/{id}
+            - Method=DELETE
+          filters:
+            - SetPath=/api/bike/{id}
+
+        # Customer Service Routes
+        - id: customer-service-create
+          uri: http://${CUSTOMER_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/customers
+            - Method=POST
+          filters:
+            - SetPath=/api/customer
+        - id: customer-service-get-all
+          uri: http://${CUSTOMER_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/customer
+            - Method=GET
+          filters:
+            - SetPath=/api/customer
+        - id: customer-service-update
+          uri: http://${CUSTOMER_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/customer/{id}
+            - Method=PUT
+          filters:
+            - SetPath=/api/customer/{id}
+        - id: customer-service-delete
+          uri: http://${CUSTOMER_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/customer/{id}
+            - Method=DELETE
+          filters:
+            - SetPath=/api/customer/{id}
