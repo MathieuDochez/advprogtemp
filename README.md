@@ -74,6 +74,19 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Built With
+
+![Architecture](/images/tests_bike.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_review.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_customer.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_repair.png?raw=true "TESTS Bike")
+<br />
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 ## Getting Started
 ### Prerequisites
