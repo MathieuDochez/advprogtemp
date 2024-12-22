@@ -43,10 +43,10 @@
 In our project we developed a Java backend achitecture of the basis of microservices. The acrhitecture includes:
 
 - 4 microservices
-  - OneoMySQL backend microservices
+  - One MySQL backend microservice
   - Three MongoDB backend microservices
 - Github Actions pipline
-- Api related stuff
+- API Gateway & OAuth2
 - Local hosting
 
 With this we intent to make te annoying process of getting ur bike fixed easier.
@@ -58,8 +58,6 @@ With this we intent to make te annoying process of getting ur bike fixed easier.
 ![Architecture](/images/architecture.png?raw=true "Architecture")
 <br />
 Made by: Mathieu Dochez & Moos Vanlangendonck
-<!-- TODO -->
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -71,6 +69,26 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 * [![Java][Java.com]][Java-url]
 * [![SpringBoot][SpringBoot.com]][SpringBoot-url]
 * [![NPM][NPM.com]][NPM-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Built With
+
+#### UNIT TESTS
+![Architecture](/images/tests_bike.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_review.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_customer.png?raw=true "TESTS Bike")
+<br />
+![Architecture](/images/tests_repair.png?raw=true "TESTS Bike")
+<br />
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### DOCKER
+![Architecture](/images/docker_hub.png?raw=true "TESTS Bike")
+<br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
