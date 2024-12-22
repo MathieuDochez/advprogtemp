@@ -28,7 +28,6 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 
-@SpringBootTest
 class RepairServiceApplicationTests {
 
     @Test
