@@ -16,7 +16,7 @@ services:
  mongo-review:
     image: mongo:latest
     ports:
-      - 27018:27017
+      - 8082:8082
     volumes:
       - mongodb_review_data:/data/db
 
