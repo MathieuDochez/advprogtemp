@@ -15,5 +15,5 @@ public class BikeRequest {
     private String skuCode;
     private String name;
     private String description;
-    private BigDecimal price;
+    private Double price;
 }
