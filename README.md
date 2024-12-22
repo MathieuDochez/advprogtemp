@@ -43,10 +43,10 @@
 In our project we developed a Java backend achitecture of the basis of microservices. The acrhitecture includes:
 
 - 4 microservices
-  - OneoMySQL backend microservices
+  - One MySQL backend microservice
   - Three MongoDB backend microservices
 - Github Actions pipline
-- Api related stuff
+- API Gateway & OAuth2
 - Local hosting
 
 With this we intent to make te annoying process of getting ur bike fixed easier.
