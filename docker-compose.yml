@@ -32,20 +32,18 @@ services:
    MYSQL_ROOT_PASSWORD: abc123
 
  review-service:
-  depends_on:
-    - mysql-review
-  image: mathieudochez/review-service #nog aan te passen '/review-service' miverboven/inventory-service
-  ports:
-    - 3307:3307
-  links:
-    - mysql-review
-  environment:
-   MYSQL_DB_USERNAME: root
-   REVIEW_SERVICE_BASEURL: review-service:8083
-   MYSQL_DB_PASSWORD: abc123
-   MYSQL_DB_HOST: mysql-review
-   MYSQL_DB_PORT: 3307
-
+    depends_on:
+      - mongo-review
+    image: mathieudochez/review-service
+    ports:
+      - 8083:8083
+    links:
+      - mongo-review
+    environment:
+      MONGODB_PORT: 27017
+      MONGODB_HOST: mongo-review
+      REVIEW_SERVICE_BASEURL: review-service:8083
+      
   bike-service:
   depends_on:
     - mongo-bike
