@@ -1,7 +1,22 @@
 package fact.it.customerservice;
 
+import fact.it.customerservice.dto.CustomerRequest;
+import fact.it.customerservice.dto.CustomerResponse;
+import fact.it.customerservice.model.Customer;
+import fact.it.customerservice.repository.CustomerRepository;
+import fact.it.customerservice.service.CustomerService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CustomerServiceApplicationTests {
