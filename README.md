@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Hazel](/images/architecture.png?raw=true "Architecture")
+![Architecture](/images/architecture.png?raw=true "Architecture")
 <br />
 Made by: Mathieu Dochez & Moos Vanlangendonck
 <!-- TODO -->
@@ -64,29 +64,16 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/MathieuDochez/advprogtemp.git
    ```
-2. Install NPM packages
+2. Git pull to ensure you have the latest version
    ```sh
-   npm install
-   ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-6. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
+   git pull
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
