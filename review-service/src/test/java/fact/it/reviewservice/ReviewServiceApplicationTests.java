@@ -31,7 +31,7 @@ class ReviewServiceApplicationTests {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        //MockitoAnnotations.openMocks(this);
     }
 
     @Test
