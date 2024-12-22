@@ -13,5 +13,4 @@ public class RepairLineItemDto {
     private Long id;
     private String skuCode;
     private BigDecimal price;
-    private Integer quantity;
 }

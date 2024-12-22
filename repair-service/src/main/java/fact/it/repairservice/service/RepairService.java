@@ -109,7 +109,6 @@ public class RepairService {
     private RepairLineItem mapToRepairLineItem(RepairLineItemDto repairLineItemDto) {
         RepairLineItem repairLineItem = new RepairLineItem();
         repairLineItem.setPrice(repairLineItemDto.getPrice());
-        repairLineItem.setQuantity(repairLineItemDto.getQuantity());
         repairLineItem.setSkuCode(repairLineItemDto.getSkuCode());
         return repairLineItem;
     }
@@ -119,8 +118,7 @@ public class RepairService {
                 .map(repairLineItem -> new RepairLineItemDto(
                         repairLineItem.getId(),
                         repairLineItem.getSkuCode(),
-                        repairLineItem.getPrice(),
-                        repairLineItem.getQuantity()
+                        repairLineItem.getPrice()
                 ))
                 .collect(Collectors.toList());
     }
