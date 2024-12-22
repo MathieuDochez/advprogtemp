@@ -37,6 +37,23 @@
   </ol>
 </details>
 
+<hr/>
+<br/>
+## Introduction
+
+In our project we developed a Java backend achitecture of the basis of microservices. The acrhitecture includes:
+
+- 4 microservices
+  - Two MySQL backend microservices
+  - Two MongoDB backend microservices
+- Github Actions pipline
+- Api related stuff
+- Local hosting (Okteto didn't work anymore)
+
+Our story is that we want to let people see football matches, clubs, players and transfers.
+<hr/>
+<br/>
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
