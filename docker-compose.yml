@@ -1,3 +1,7 @@
+networks:
+  default:
+    driver: bridge
+
 services:
  mongo-bike:
   image: mongo:latest
