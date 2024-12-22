@@ -58,8 +58,6 @@ With this we intent to make te annoying process of getting ur bike fixed easier.
 ![Architecture](/images/architecture.png?raw=true "Architecture")
 <br />
 Made by: Mathieu Dochez & Moos Vanlangendonck
-<!-- TODO -->
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -76,6 +74,7 @@ Made by: Mathieu Dochez & Moos Vanlangendonck
 
 ### Built With
 
+#### UNIT TESTS
 ![Architecture](/images/tests_bike.png?raw=true "TESTS Bike")
 <br />
 ![Architecture](/images/tests_review.png?raw=true "TESTS Bike")
