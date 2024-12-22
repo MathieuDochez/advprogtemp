@@ -19,18 +19,6 @@ services:
       - 8082:8082
     volumes:
       - mongodb_review_data:/data/db
-
-  review-service:
-    depends_on:
-      - mongo-review
-    image: mathieudochez/review-service
-    ports:
-      - 22017:27017
-    links:
-      - mongo-review
-    environment:
-      MONGODB_PORT: 27017
-      MONGODB_HOST: mongo-review
     
  mysql-repair:
   image: mysql:latest
@@ -64,6 +52,18 @@ services:
   environment:
    MONGODB_PORT: 27017
    MONGODB_HOST: mongo-customer
+   
+   review-service:
+    depends_on:
+      - mongo-review
+    image: mathieudochez/review-service
+    ports:
+      - 22017:27017
+    links:
+      - mongo-review
+    environment:
+      MONGODB_PORT: 27017
+      MONGODB_HOST: mongo-review
 
   repair-service:
   depends_on:
@@ -78,7 +78,8 @@ services:
     - bike-service
     - customer-service
   environment:
-   BIKE_SERVICE_BASEURL: repair-service:8080
+   BIKE_SERVICE_BASEURL: bike-service:8080
+   REVIEW_SERVICE_BASEURL: review-service:8083
    REPAIR_SERVICE_BASEURL: repair-service:8082
    MYSQL_DB_USERNAME: root
    MYSQL_DB_PASSWORD: abc123
@@ -97,7 +98,8 @@ services:
      - repair-service
    environment:
      BIKE_SERVICE_BASEURL: bike-service:8080
-     REPAIR_SERVICE_BASEURL: repair-service:8081
+     REPAIR_SERVICE_BASEURL: repair-service:8082
+     REVIEW_SERVICE_BASEURL: review-service:8083
 
 volumes:
  mongodb_bike_data:
