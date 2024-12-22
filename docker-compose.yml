@@ -9,7 +9,7 @@ services:
   mongo-customer:
   image: mongo:latest
   ports:
-    - 22018:22018
+    - 22017:22017
   volumes:
     - mongodb_customer_data:/data/db
        
@@ -62,11 +62,11 @@ services:
     - mongo-customer
   image: #nog aan te passen '/customer-service' miverboven/product-service
   ports:
-    - 22018:27018
+    - 22017:27017
   links:
     - mongo-products
   environment:
-   MONGODB_PORT: 27018
+   MONGODB_PORT: 27017
    MONGODB_HOST: mongo-customer
 
   repair-service:
