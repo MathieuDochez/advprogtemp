@@ -81,7 +81,7 @@ jobs:
 
       - name: Upload container to Docker Hub with Push
         run: docker push ${{ secrets.DOCKER_USER }}/review-service:latest
-  repaieservice:
+  repairservice:
     runs-on: ubuntu-latest
     name: Java 17 build, test, deliver repair-service container
     steps:
