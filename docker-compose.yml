@@ -6,21 +6,21 @@ services:
  mongo-bike:
   image: mongo:latest
   ports:
-    - 22017:27017
+    - 27017:27017
   volumes:
     - mongodb_bike_data:/data/db
  
   mongo-customer:
   image: mongo:latest
   ports:
-    - 22018:22017
+    - 27018:27017
   volumes:
     - mongodb_customer_data:/data/db
        
  mongo-review:
     image: mongo:latest
     ports:
-      - 22019:22017
+      - 27019:27017
     volumes:
       - mongodb_review_data:/data/db
     
